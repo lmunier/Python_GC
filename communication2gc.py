@@ -132,7 +132,7 @@ def on_message(client, userdata, msg):
 	client.publish("GC_2018/point/output/team2", team2_point)
 	
 	file = open("/home/pi/Documents/GC_save/matchsave"+match+".txt","w")
-	file.write("MANUAL SAVE :\r\nGlobal recipes: "+global_recipes+"\r\n")
+	file.write("Automatic SAVE :\r\nGlobal recipes: "+global_recipes+"\r\n")
 	file.write("Team 1: "+team1_name+"\r\nPoints: "+str(team2_point)+"\r\nRecipes"+team1_recipes+"\r\nNombre dans poubelle "+str(team1_trash)+"\r\nNombre de périmé pas dans poubelle"+str(team1_passed_out)+"\r\n")
 	file.write("\r\nTeam 2: "+team2_name+"\r\nPoint: "+str(team2_point)+"\r\nRecipes: "+team2_recipes+"\r\nNombre dans poubelle "+str(team2_trash)+"\r\nNombre de périmé pas dans poubelle"+str(team2_passed_out)+"\r\n")
 	file.close()
