@@ -8,7 +8,12 @@ import multiprocessing
 import paho.mqtt as mqtt
 import paho.mqtt.client as paho
 import timer_gc
+import serial
 
+# Initialize serial communication
+ser = serial.Serial('/dev/ttyACM0', 9600)
+
+# Initalize global variables
 state = multiprocessing.Value('i', 0)
 
 team1_name = ""
@@ -73,9 +78,13 @@ def on_message(client, userdata, msg):
 				client.publish("GC_2018/trash/output/team2", team2_trash)
 				print("Trash for team1 " +str(team1_trash)+" and for team2 "+str(team2_trash))
 
+		elif strg_gc[1] == "calibrate":
+			ser.write('z'.encode())
 		elif strg_gc[1] == "timer_state":
 			if msg.payload == b'start':
 				state.value = timer_gc.dict_state["start"]
+				ser.write((str(round)+global_recipes+'\n').encode())
+				print(str(round)+global_recipes+'\n')
 			elif msg.payload == b'stop':
 				state.value = timer_gc.dict_state["stop"]
 			elif msg.payload == b'pause':

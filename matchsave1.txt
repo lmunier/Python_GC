@@ -1,9 +1,0 @@
-MANUAL SAVE :
-Global recipes: FOCSC
-Team 1: 
-Points: 0
-RecipesTTM
-
-Team 2: 
-Point: 0
-Recipes: M
